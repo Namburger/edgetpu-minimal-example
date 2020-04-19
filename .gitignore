@@ -1,0 +1,4 @@
+*.swap
+out
+build
+scripts/cmake*
