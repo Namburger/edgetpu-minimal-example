@@ -14,7 +14,11 @@ $ make
 This process may takes ~ 30 -> 45 mins on the Coral Dev Board and the RPI since it'll build the `libtensorflow-lite.a`, `libglog.a`, and `libabsl*.a`.
 
 ## Run
-** With edgetpu:**
+
+With edgetpu:
+
 `$ ../out/aarch64/minimal ../test_data/mobilenet_v1_1.0_224_quant_edgetpu.tflite ../test_data/resized_cat.bmp ../test_data/imagenet_labels.txt`
-** With out edgetpu:**
+
+Without edgetpu:
+
 `$ ../out/aarch64/minimal ../test_data/mobilenet_v1_1.0_224_quant.tflite ../test_data/resized_cat.bmp ../test_data/imagenet_labels.txt`
