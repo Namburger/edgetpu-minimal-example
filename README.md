@@ -1,6 +1,6 @@
 # edgetpu-minimal-example
 
-This repo demonstrate how to build [google-coral/edgetpu minimal example](https://github.com/google-coral/edgetpu/blob/master/src/cpp/examples/minimal.cc)natively. The code was modified slightly to supports non CPU model and take in a label file. Since bazel doesn't have great supports for arm platform, we'll use cmake (the CMakeLists.txt is based on [this](https://github.com/google-coral/edgetpu/pull/88/commits/a5fdb413eb7492abfbec3c0dbc8a5543e7f84874)). Platform tested on are x86_64, armv7l, and aarch64.
+This repo demonstrate how to build [google-coral/edgetpu minimal example](https://github.com/google-coral/edgetpu/blob/master/src/cpp/examples/minimal.cc) natively. The code was modified slightly to supports CPU models and take in a label file. Since bazel doesn't have great supports for arm platform, we'll use cmake (the CMakeLists.txt is based on [this repo](https://github.com/google-coral/edgetpu/pull/88/commits/a5fdb413eb7492abfbec3c0dbc8a5543e7f84874)). Platform tested on are x86_64, armv7l, and aarch64.
 
 ## Build Instructions
 ```
