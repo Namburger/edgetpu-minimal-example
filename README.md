@@ -1,4 +1,14 @@
 # edgetpu-minimal-example
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![made-with-coral](https://img.shields.io/badge/Made%20with-Coral-orange)](https://coral.ai/)
+[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
+[![made-with-c++](https://img.shields.io/badge/Made%20with-C%2B%2B-red)](https://www.cplusplus.com/)
+[![made-with-opencv](https://img.shields.io/badge/Made%20with-OpenCV-blue)](https://opencv.org/)
+[![made-with-tflite](https://img.shields.io/badge/Made%20with-Tensorflow--Lite-orange)](https://www.tensorflow.org/lite/)
+[![made-with-cmake](https://img.shields.io/badge/Made%20with-cmake-Black)](https://cmake.org/)
+[![ai-with-ai](https://img.shields.io/badge/AI%20with-AI-brightgreen)](https://en.wikipedia.org/wiki/Artificial_intelligence)
+[![made-with-code-hoodies](https://img.shields.io/badge/Made%20with-coding%20hoodies-blue)](https://www.google.com/search?q=coding+hoodies&rlz=1CAPSFN_enUS898&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjLyYPE2IHpAhW_HDQIHdqeBmwQ_AUoAXoECA8QAw&biw=1920&bih=961)
+[![test-coverage](https://img.shields.io/badge/Test%20Coverage-0%25-yellow)](https://en.wikipedia.org/wiki/0)
 
 This repo demonstrate how to build [google-coral/edgetpu minimal example](https://github.com/google-coral/edgetpu/blob/master/src/cpp/examples/minimal.cc) natively. The code was modified slightly to supports CPU models and take in a label file. Since bazel doesn't have great supports for arm platform, we'll use cmake (the CMakeLists.txt is based on [this repo](https://github.com/google-coral/edgetpu/pull/88/commits/a5fdb413eb7492abfbec3c0dbc8a5543e7f84874)). Platform tested on are x86_64, armv7l, and aarch64.
 
