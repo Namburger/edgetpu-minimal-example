@@ -1,9 +1,7 @@
 # edgetpu-minimal-example
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![made-with-coral](https://img.shields.io/badge/Made%20with-Coral-orange)](https://coral.ai/)
-[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 [![made-with-c++](https://img.shields.io/badge/Made%20with-C%2B%2B-red)](https://www.cplusplus.com/)
-[![made-with-opencv](https://img.shields.io/badge/Made%20with-OpenCV-blue)](https://opencv.org/)
 [![made-with-tflite](https://img.shields.io/badge/Made%20with-Tensorflow--Lite-orange)](https://www.tensorflow.org/lite/)
 [![made-with-cmake](https://img.shields.io/badge/Made%20with-cmake-Black)](https://cmake.org/)
 [![ai-with-ai](https://img.shields.io/badge/AI%20with-AI-brightgreen)](https://en.wikipedia.org/wiki/Artificial_intelligence)
