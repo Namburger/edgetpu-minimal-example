@@ -9,8 +9,27 @@
 This repo demonstrate how to build [google-coral/edgetpu minimal example](https://github.com/google-coral/edgetpu/blob/master/src/cpp/examples/minimal.cc) natively. The code was modified slightly to supports CPU models and take in a label file. Since bazel doesn't have great supports for arm platform, we'll use cmake (the CMakeLists.txt is based on [this repo](https://github.com/google-coral/edgetpu/pull/88/commits/a5fdb413eb7492abfbec3c0dbc8a5543e7f84874)). Platform tested on are x86_64, armv7l, and aarch64.
 
 ## Build Instructions
+Note: you are reading this on the experimental branch that allows you to pick any tensorflow version you want, 
+if you are not feeling advengerous, switch to master :)
+
+First clone this repo and checkout this branch:
 ```
 $ git clone https://github.com/Namburger/edgetpu-minimal-example.git && cd edgetpu-minimal-example
+$ git checkout custom-tensorflow-build
+```
+
+Second clone libedgetpu (please do this from the root dir of this repo).
+```
+$ git clone https://github.com/google-coral/libedgetpu
+```
+Open `libedgetpu/WORKSPACE`, change `TENSORFLOW_COMMIT` and `TENSORFLOW_SHA256` with the commit of tensorflow you want to use. Then build `libedgetpu`:
+```
+$ make (note that libedgepu build will requires bazel at this time)
+```
+
+Now open CMakeLists.txt and then change the `TENSORFLOW_COMMIT` to match with the commit you chose in libedgepu/WORKSPACE.
+
+```
 $ ./scripts/install_cmake.sh // install cmake if needed
 $ ./scripts/make2gbswap.sh //  [Optional] increase swap to avoid OOM killer
 $ mkdir build && cd build
