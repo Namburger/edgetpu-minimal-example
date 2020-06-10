@@ -8,8 +8,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++17 -lstdc++")
 set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
 set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
 
-# Must match with commit that libedgetpu.so was built from.
-set(TENSORFLOW_COMMIT d855adfc5a0195788bf5f92c3c7352e638aa1109)
+# Pick the tensorflow commit that you want to use, 
+# make sure that this commit matches what you will be using for libedgetpu.
+set(TENSORFLOW_COMMIT f394a768719a55b5c351ed1ecab2ec6f16f99dd4)
 
 # GET CPU Architechture
 if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
@@ -77,12 +78,15 @@ if(${EDGE_ARCH} STREQUAL "armv7l")
     set(EDGE_ARCH "armv7a")
 endif()
 
-set(TF_ET_SRC_LIB "${CMAKE_SOURCE_DIR}/libedgetpu/direct/${EDGE_ARCH}/libedgetpu.so.1.0")
+configure_file(${CMAKE_SOURCE_DIR}/libedgetpu/out/direct/${EDGE_ARCH}/libedgetpu.so.1.0  ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/libedgetpu/out/direct/${EDGE_ARCH}/libedgetpu.so.1  ${CMAKE_BINARY_DIR} COPYONLY)
+
+set(EDGETPU_LIB "${CMAKE_BINARY_DIR}/libedgetpu.so.1.0")
 set(TF_LITE_LIB "${CMAKE_BINARY_DIR}/libtensorflow-lite.a")
 include_directories(${CMAKE_SOURCE_DIR}/)
 include_directories(${CMAKE_SOURCE_DIR}/src/)
 include_directories(${CMAKE_SOURCE_DIR}/include/)
-include_directories(${CMAKE_SOURCE_DIR}/libedgetpu/)
+include_directories(${CMAKE_SOURCE_DIR}/libedgetpu/tflite/public/)
 include_directories(${CMAKE_BINARY_DIR}/tensorflow/src/tf/)
 include_directories(${CMAKE_BINARY_DIR}/tensorflow/src/tf/tensorflow/lite/tools/make/downloads/absl/)
 include_directories(${CMAKE_BINARY_DIR}/tensorflow/src/tf/tensorflow/lite/tools/make/downloads/flatbuffers/include/)
@@ -104,5 +108,5 @@ add_executable(minimal
   ${CMAKE_BINARY_DIR}/tensorflow/src/tf/tensorflow/lite/tools/make/downloads/fft2d/fftsg.c
   ${CMAKE_BINARY_DIR}/tensorflow/src/tf/tensorflow/lite/tools/optimize/sparsity/format_converter.cc
 )
-target_link_libraries(minimal model_utils ${TF_LITE_LIB} ${TF_ET_SRC_LIB})
+target_link_libraries(minimal model_utils ${TF_LITE_LIB} ${EDGETPU_LIB})
 add_dependencies(minimal model_utils tf)
