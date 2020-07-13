@@ -35,31 +35,6 @@ message("System ARCH is ${CMAKE_SYSTEM_PROCESSOR} ${EDGE_ARCH}")
 
 include(ExternalProject)
 
-ExternalProject_Add(absl_src
-    GIT_REPOSITORY https://github.com/abseil/abseil-cpp
-    GIT_PROGRESS 1
-    GIT_SHALLOW 1
-    PREFIX "absl"
-    PATCH_COMMAND sed -i /ABSL_RANDOM_HWAES_X64_FLAGS/d
-    ${CMAKE_BINARY_DIR}/absl/src/absl_src/absl/copts/AbseilConfigureCopts.cmake
-    && sed -i /random/d ${CMAKE_BINARY_DIR}/absl/src/absl_src/absl/CMakeLists.txt
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/absl_install -DCMAKE_INSTALL_LIBDIR=lib
-    BUILD_BYPRODUCTS libabsl_synchronization.a libabsl_symbolize.a
-)
-set(ABSL_LIBS absl_synchronization absl_stacktrace absl_symbolize absl_demangle_internal absl_debugging_internal absl_dynamic_annotations absl_time absl_time_zone absl_graphcycles_internal absl_failure_signal_handler absl_malloc_internal absl_base absl_spinlock_wait)
-
-ExternalProject_Add(glog_src
-    GIT_REPOSITORY https://github.com/google/glog
-    GIT_PROGRESS 1
-    GIT_SHALLOW 1
-    CMAKE_ARGS -DWITH_GFLAGS=OFF
-    -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/glog_install
-    -DCMAKE_INSTALL_LIBDIR=lib
-    PREFIX "glog_src"
-    BUILD_BYPRODUCTS  libglog.a
-)
-set(LIBGLOG ${CMAKE_BINARY_DIR}/glog_install/lib/libglog.a)
-
 ExternalProject_Add(tf
     GIT_REPOSITORY https://github.com/tensorflow/tensorflow
     GIT_TAG ${TENSORFLOW_COMMIT}
@@ -84,12 +59,9 @@ include_directories(${CMAKE_SOURCE_DIR}/src/)
 include_directories(${CMAKE_SOURCE_DIR}/include/)
 include_directories(${CMAKE_SOURCE_DIR}/libedgetpu/)
 include_directories(${CMAKE_BINARY_DIR}/tensorflow/src/tf/)
-include_directories(${CMAKE_BINARY_DIR}/tensorflow/src/tf/tensorflow/lite/tools/make/downloads/absl/)
 include_directories(${CMAKE_BINARY_DIR}/tensorflow/src/tf/tensorflow/lite/tools/make/downloads/flatbuffers/include/)
 include_directories(${CMAKE_BINARY_DIR}/glog_install/include)
 link_directories(${CMAKE_BINARY_DIR})
-link_directories(${CMAKE_BINARY_DIR}/absl_install/lib)
-link_directories(${CMAKE_BINARY_DIR}/glog_install/lib)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/out/${EDGE_ARCH})
 

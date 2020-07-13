@@ -17,7 +17,7 @@ $ mkdir build && cd build
 $ cmake ..
 $ make
 ```
-This process may takes ~ 30 -> 45 mins on the Coral Dev Board and the RPI since it'll build the `libtensorflow-lite.a`, `libglog.a`, and `libabsl*.a`.
+This process may takes ~ 30 -> 45 mins on the Coral Dev Board and the RPI since it'll build the `libtensorflow-lite.a`
 
 ## Run
 
