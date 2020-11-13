@@ -23,8 +23,14 @@ This process may takes ~ 30 -> 45 mins on the Coral Dev Board and the RPI since 
 
 With edgetpu:
 
-`$ ../out/aarch64/minimal ../test_data/mobilenet_v1_1.0_224_quant_edgetpu.tflite ../test_data/resized_cat.bmp ../test_data/imagenet_labels.txt`
+```
+$ export LD_LIBRARY_PATH=../libedgetpu/direct/aarch64
+$ ../out/aarch64/minimal ../test_data/mobilenet_v1_1.0_224_quant_edgetpu.tflite ../test_data/resized_cat.bmp ../test_data/imagenet_labels.txt
+```
 
 Without edgetpu:
 
-`$ ../out/aarch64/minimal ../test_data/mobilenet_v1_1.0_224_quant.tflite ../test_data/resized_cat.bmp ../test_data/imagenet_labels.txt`
+```
+$ export LD_LIBRARY_PATH=../libedgetpu/direct/aarch64
+$ ../out/aarch64/minimal ../test_data/mobilenet_v1_1.0_224_quant.tflite ../test_data/resized_cat.bmp ../test_data/imagenet_labels.txt
+```
